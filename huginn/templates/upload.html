@@ -1,0 +1,71 @@
+<!DOCTYPE>
+<html>
+   <head>
+      <title>Upload</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+      <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" type="text/css" media="all" />
+      <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+      <script type=text/javascript src="{{url_for('static', filename='validate.js') }}"></script>
+      <script type=text/javascript src="{{url_for('static', filename='jquery.ui.combify.js') }}"></script>
+   <head>
+
+   <div class="upload">
+      <header>
+         <h1>Upload your Toolbox file!</h1>
+      </header>
+      <body>
+         <p id="instruction">Choose your Toolbox file and click submit</p>
+
+         <form id="toolbox-form" method="post" enctype="multipart/form-data">
+            <input id="file-submission" type="file" name="toolbox_file" accept=".txt" value="upload">
+         </form>
+            <!--Dummy Button-->
+         <button class="submit" id="file_button">Submit</button>
+      </body>
+   </div>
+
+   <div id="confirm-wrapper" class="confirm">
+      <div id="steps"></div>
+      <h1>Confirmation</h1>
+
+      <!--Toolbox Preview-->
+      <div id="preview-wrapper" class="preview">
+         <h2>Your toolbox file looks something like this</h2>
+         <table id="sample-file">
+            <th class="right-aligned">Marker</th><th class="left-aligned">Data</th>
+         </table>
+      </div>
+
+      <!--Clarify Delimiters-->
+      <div id="delimiter-wrapper" class="delimiter">
+         <h2>Which toolbox markers did you use to separate sections?</h2>
+         <form id="delimiter-form">
+         </form>
+         <button class="submit" id="delimit-button">Looks Good!</button>
+      </div>
+
+      <!--Clarify Section metadata-->
+      <div id="metadata-wrapper" class="metadata">
+         <h2>Clarify the markers you used for metadata, if any</h2>
+         <form id="metadata-form">
+         </form>
+         <button class="submit" id="metadata-button">Looks Good!</button>
+      </div>
+
+      <!--Content Markers-->
+      <div id="content-marker-wrapper" class="content-marker">
+         <h2>Could you clarify their intended interpretation?</h2>
+         <form id="content-marker-form" method="post" enctype="multipart/form-data">
+                  <!--<th>Your marker</th>
+                  <th>Xigt Tier ID</th>
+                  <th>Interpretation</th>
+                  <th>Attributes</th>
+                  <th>Notes</th>-->
+         </form>
+         <button class="submit" id="final_button">Submit</button>
+      </div>
+   </div>
+
+</html>
