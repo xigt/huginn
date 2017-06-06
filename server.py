@@ -1,15 +1,18 @@
-import os, sys, random, toolbox, re, tempfile, pprint
-from flask import Flask, request, render_template, url_for
-import toolbox_import
 
+from __future__ import print_function
 
+import os
+import tempfile
+
+from flask import Flask, request, render_template #, url_for
+
+from xigt.importers import toolbox as toolbox_import
 
 app = Flask(__name__)
 
 @app.route("/", methods=['POST', 'GET'])
 def upload(name=None, methods=['POST', 'GET']):
-    print request.method
-    filer = open("hello.txt", "w+")
+    print(request.method)
     temp_save_file = tempfile.mkstemp()
     temp_upload_file = tempfile.mkstemp()
     if request.method == 'POST':
@@ -21,12 +24,12 @@ def upload(name=None, methods=['POST', 'GET']):
 def print_json(json_file, indent=0):
     for category in json_file:
         tab = "\t" * indent
-        print "%s%s\n" % (tab, category)
+        print("%s%s\n" % (tab, category))
         if type(json_file[category]) is dict:
             print_json(json_file[category], indent + 1)
         else:
             for line in json_file[category].split("\n"):
-                print "\t%s%s" % (tab, line)
+                print("\t%s%s" % (tab, line))
 
 
 if __name__ == "__main__":
